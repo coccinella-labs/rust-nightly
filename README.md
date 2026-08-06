@@ -1,5 +1,7 @@
 # rust-nightly
 
+[![Release](https://img.shields.io/github/v/release/libnudget/rust-nightly?logo=github&label=latest)](https://github.com/libnudget/rust-nightly/releases)
+
 Reusable GitHub Action workflow for nightly Rust builds.
 
 ## What it does
