@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Coccinella-Labs/rust-nightly/main/.github/assets/thumbnail.png" alt="rust-nightly" width="100%">
+</p>
+
 # rust-nightly
 
 [![Release](https://img.shields.io/github/v/release/libnudget/rust-nightly?logo=github&label=latest)](https://github.com/libnudget/rust-nightly/releases)
