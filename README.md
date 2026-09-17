@@ -4,7 +4,7 @@
 
 # rust-nightly
 
-[![Release](https://img.shields.io/github/v/release/libnudget/rust-nightly?logo=github&label=latest)](https://github.com/libnudget/rust-nightly/releases)
+[![Release](https://img.shields.io/github/v/release/coccinella-labs/rust-nightly?logo=github&label=latest)](https://github.com/coccinella-labs/rust-nightly/releases)
 
 Reusable GitHub Action workflow for nightly Rust builds.
 
@@ -28,7 +28,7 @@ on:
 
 jobs:
   nightly:
-    uses: libnudget/rust-nightly/.github/workflows/nightly.yml@main
+    uses: coccinella-labs/rust-nightly/.github/workflows/nightly.yml@main
     with:
       rust-version: stable
       create-release: true
