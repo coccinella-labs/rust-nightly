@@ -51,9 +51,10 @@ env:
   RUST_BACKTRACE: short
   RUSTFLAGS: "-D warnings"
   RUSTUP_MAX_RETRIES: 10
-  # Release tag includes the run number so a rerun on an unchanged commit creates a
-  # fresh release instead of colliding with an existing immutable one.
-  RELEASE_TAG: ${{ inputs.release-tag }}-${{ github.sha }}-${{ github.run_number }}
+  # Release tag includes the run number and attempt so a rerun on an unchanged
+  # commit creates a fresh release instead of colliding with an existing
+  # immutable one. run_number alone is not enough: it is stable across reruns.
+  RELEASE_TAG: ${{ inputs.release-tag }}-${{ github.sha }}-${{ github.run_number }}.${{ github.run_attempt }}
 
 jobs:
   nightly:
