@@ -51,6 +51,9 @@ env:
   RUST_BACKTRACE: short
   RUSTFLAGS: "-D warnings"
   RUSTUP_MAX_RETRIES: 10
+  # Release tag includes the run number so a rerun on an unchanged commit creates a
+  # fresh release instead of colliding with an existing immutable one.
+  RELEASE_TAG: ${{ inputs.release-tag }}-${{ github.sha }}-${{ github.run_number }}
 
 jobs:
   nightly:
@@ -89,21 +92,20 @@ jobs:
       with:
         draft: true
         prerelease: ${{ inputs.release-prerelease }}
-        name: ${{ inputs.release-tag }}-${{ github.sha }}
-        tag_name: ${{ inputs.release-tag }}-${{ github.sha }}
+        name: ${{ env.RELEASE_TAG }}
+        tag_name: ${{ env.RELEASE_TAG }}
         files: |
           target/release/harper
-          bazel-bin/harper
-          bazel-bin/harper-ui/harper
       env:
         GITHUB_TOKEN: ${{ github.token }}
 
     - name: Publish release
       if: inputs.create-release
       run: |
-        gh release edit ${{ inputs.release-tag }}-${{ github.sha }} --draft=false
+        gh release edit "$RELEASE_TAG" --draft=false
       env:
         GH_TOKEN: ${{ github.token }}
+        RELEASE_TAG: ${{ env.RELEASE_TAG }}
 
     - name: Run benchmarks
       if: inputs.run-benchmarks
